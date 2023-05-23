@@ -68,6 +68,4 @@ class Result<T> {
     };
 };
 
-
-
 export default Result;
