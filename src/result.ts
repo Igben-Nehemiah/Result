@@ -16,7 +16,7 @@ class Result<T> {
         };
     };
 
-    public static fromError(error: Error): Result<T>{
+    public static fromError(error: Error){
         return new Result(error);
     };
 
@@ -29,6 +29,20 @@ class Result<T> {
         return this._error === undefined ? 
             this.value : defaultValue;
     };
+
+    public match(onSuccess: (value: T) => void, 
+        onFailure: (error: Error) => void): void {
+
+        if (this._error !== undefined) {
+            onFailure(this._error);
+            return;
+        };
+
+        if (this._value !== undefined) {
+            onSuccess(this._value);
+            return;
+        };
+    }
 
     public get value(): T {
         this.validate();
