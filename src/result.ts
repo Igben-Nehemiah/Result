@@ -1,8 +1,8 @@
 import Optional from "./optional";
 
 class Result<T> {
-    private _value?: T;
-    private _error?: Error;
+    private readonly _value?: T;
+    private readonly _error?: Error;
 
     constructor(value: T);
     constructor(error: Error);
@@ -20,21 +20,18 @@ class Result<T> {
         return new Result(error);
     };
 
-
-    public toResult(): Result<T> {
-        throw new Error();
-    };
-
-    public orInvoke<TError>(defaultFunc: (error: TError) => T): T {
-        throw new Error();
+    public orInvoke(func: () => T): T {
+        return this._error === undefined ?
+            this.value : func();
     };
 
     public or(defaultValue: Optional<T>): Optional<T> {
-        throw new Error();
+        return this._error === undefined ? 
+            this.value : defaultValue;
     };
 
     public get value(): T {
-        if (this.isNotSuccessful) throw new Error();
+        this.validate();
         return this._value!;
     };
 
@@ -56,3 +53,7 @@ class Result<T> {
         };
     };
 };
+
+
+
+export default Result;
