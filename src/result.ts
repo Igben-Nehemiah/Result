@@ -1,5 +1,3 @@
-import Optional from "./optional";
-
 class Result<T> {
     private readonly _value?: T;
     private readonly _error?: Error;
@@ -25,7 +23,7 @@ class Result<T> {
             this.value : func();
     };
 
-    public or(defaultValue: Optional<T>): Optional<T> {
+    public or(defaultValue: T): T {
         return this._error === undefined ? 
             this.value : defaultValue;
     };
