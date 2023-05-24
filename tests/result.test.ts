@@ -1,9 +1,5 @@
 import Result from "../src/result";
 
-class CustomError extends Error {
-
-}
-
 
 describe("Result", () => {
     describe("when result is contructed with a value", () => {
@@ -37,7 +33,7 @@ describe("Result", () => {
         });
     });
 
-    describe("when fromError is called with an instance of error", () => {
+    describe("when 'fromError' is called with an instance of error", () => {
         it("should create a result that is not successful", () => {
             const result = Result.fromError(new CustomError());
 
@@ -48,7 +44,7 @@ describe("Result", () => {
     });
 
 
-    describe("when onInvoke is called on a successful result", () => {
+    describe("when 'onInvoke' is called on a successful result", () => {
         it ("shoud return the value of the result", () => {
             const value = 5;
             const result = new Result(value);
@@ -60,7 +56,7 @@ describe("Result", () => {
     });
 
 
-    describe("when onInvoke is called on a failed result", () => {
+    describe("when 'onInvoke' is called on a failed result", () => {
         it ("shoud return the value from the invoke method", () => {
             const value = 5;
             const result = new Result<number>(new Error());
@@ -70,4 +66,30 @@ describe("Result", () => {
             expect(resultValue).toBe(value + 3);
         });
     });
+
+    describe("when 'or' is called", () => {
+        it ("shoud return the value of the result if no error", () => {
+            const value = 5;
+            const result = new Result(value);
+            
+            const resultValue = result.or(value + 3);
+
+            expect(resultValue).toBe(value);
+        });
+    });
+
+    describe("when 'or' is called", () => {
+        it ("shoud return the default value if there is error", () => {
+            const value = 5;
+            const result = new Result<number>(new Error());
+            
+            const resultValue = result.or(3);
+
+            expect(resultValue).toBe(3);
+        });
+    });
+
 });
+
+
+class CustomError extends Error {}
