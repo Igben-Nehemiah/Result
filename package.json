@@ -1,8 +1,13 @@
 {
   "name": "@nehemy/result",
-  "version": "1.0.3",
-  "description": "A simple project to help developers work with monads",
-  "main": "dist/main.js",
+  "version": "1.0.8",
+  "description": "A simple project to help developers work with Result type",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/*.map",
+    "lib/*.js",
+    "src/*"
+  ],
   "scripts": {
     "prepublish": "tsc",
     "build": "tsc",
