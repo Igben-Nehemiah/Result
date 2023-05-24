@@ -4,7 +4,8 @@
   "description": "A simple project to help developers work with monads",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
