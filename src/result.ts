@@ -1,4 +1,4 @@
-class Result<T> {
+export class Result<T> {
     private readonly _value?: T;
     private readonly _error?: Error;
 
@@ -66,5 +66,3 @@ class Result<T> {
         };
     };
 };
-
-export default Result;
