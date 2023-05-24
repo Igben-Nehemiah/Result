@@ -30,8 +30,44 @@ describe("Result", () => {
         it("should create a result that has no value", () => {
             const error = new CustomError();
             const result = new Result(error);
-            
+
             expect(result.hasValue).toBeFalsy();
+            expect(result.isSuccessful).toBeFalsy();
+            expect(result.isNotSuccessful).toBeTruthy();
+        });
+    });
+
+    describe("when fromError is called with an instance of error", () => {
+        it("should create a result that is not successful", () => {
+            const result = Result.fromError(new CustomError());
+
+            expect(result.hasValue).toBeFalsy();
+            expect(result.isSuccessful).toBeFalsy();
+            expect(result.isNotSuccessful).toBeTruthy();
+        });
+    });
+
+
+    describe("when onInvoke is called on a successful result", () => {
+        it ("shoud return the value of the result", () => {
+            const value = 5;
+            const result = new Result(value);
+            
+            const resultValue = result.orInvoke(() => value + 3);
+
+            expect(resultValue).toBe(value);
+        });
+    });
+
+
+    describe("when onInvoke is called on a failed result", () => {
+        it ("shoud return the value from the invoke method", () => {
+            const value = 5;
+            const result = new Result<number>(new Error());
+            
+            const resultValue = result.orInvoke(() => value + 3);
+
+            expect(resultValue).toBe(value + 3);
         });
     });
 });
