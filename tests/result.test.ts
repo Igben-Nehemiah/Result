@@ -108,7 +108,6 @@ describe("Result", () => {
 
     describe("when 'match' is called on a failed result", () => {
         it ("shoud call the failure path", () => {
-            const value = 5;
             const result = new Result<number>(new CustomError());
             let valueFromResult: number | undefined = undefined;
             let errorFromResult: CustomError | undefined = undefined;
