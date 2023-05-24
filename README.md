@@ -30,7 +30,7 @@ result.or(4);
 console.log(result.value); // 12
 
 ```
--
+
 ## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
