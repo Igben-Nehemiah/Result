@@ -8,5 +8,9 @@
     "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
     "outDir": "dist",
     "sourceMap": true,
-  }
+  },
+  "exclude": [
+    "tests",
+    "*.test.ts"
+  ]
 }
