@@ -89,6 +89,39 @@ describe("Result", () => {
         });
     });
 
+    describe("when 'match' is called on a successful result", () => {
+        it ("shoud call the happy path", () => {
+            const value = 5;
+            const result = new Result<number>(value);
+            let valueFromResult: number = 0;
+            let errorFromResult: CustomError | undefined = undefined;
+            
+            result.match(
+                (value) => { valueFromResult = value; }, 
+                (error) => { errorFromResult = error; }
+            );
+
+            expect(valueFromResult).toBe(value);
+            expect(errorFromResult).toBeUndefined();
+        });
+    });
+
+    describe("when 'match' is called on a failed result", () => {
+        it ("shoud call the happy path", () => {
+            const value = 5;
+            const result = new Result<number>(new CustomError());
+            let valueFromResult: number | undefined = undefined;
+            let errorFromResult: CustomError | undefined = undefined;
+            
+            result.match(
+                (value) => { valueFromResult = value; }, 
+                (error) => { errorFromResult = error; }
+            );
+
+            expect(valueFromResult).toBeUndefined();
+            expect(errorFromResult).not.toBeUndefined();
+        });
+    });
 });
 
 
