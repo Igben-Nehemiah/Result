@@ -3,9 +3,13 @@ export class Result<T> {
     private readonly _error?: Error;
 
     /**
-     *
+     * @param value - Value of result.
      */
     constructor(value: T);
+    /**
+     * 
+     * @param error - Error of result.
+     */
     constructor(error: Error);
     constructor(value: T | Error) {
         if (value instanceof Error){
