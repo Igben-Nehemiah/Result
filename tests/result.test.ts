@@ -90,7 +90,7 @@ describe("Result", () => {
     });
 
     describe("when 'match' is called on a successful result", () => {
-        it ("shoud call the happy path", () => {
+        it ("shoud call the successful path", () => {
             const value = 5;
             const result = new Result<number>(value);
             let valueFromResult: number = 0;
@@ -107,7 +107,7 @@ describe("Result", () => {
     });
 
     describe("when 'match' is called on a failed result", () => {
-        it ("shoud call the happy path", () => {
+        it ("shoud call the failure path", () => {
             const value = 5;
             const result = new Result<number>(new CustomError());
             let valueFromResult: number | undefined = undefined;
