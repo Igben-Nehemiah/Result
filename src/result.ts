@@ -4,14 +4,15 @@ class Result<T> {
 
     constructor(value: T);
     constructor(error: Error);
-    constructor(value?: T, error?: Error) {
-        if (value !== undefined){
-            this._value = value;
+    constructor(value: T | Error) {
+        if (value instanceof Error){
+            this._error = value;
+            this._value = undefined;
+            return;
         };
         
-        if (error !== undefined){
-            this._error = error;
-        };
+        this._value = value;
+        this._error = undefined;
     };
 
     public static fromError(error: Error){
