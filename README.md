@@ -1,4 +1,14 @@
 # Result
+In functional programming, a Result Monad is a type that represents the result of a computation that can potentially fail or produce an error. It provides a way to handle errors or exceptional cases in a functional and composable manner.
+
+The Result Monad typically has two possible values:
+
+- Success: Represents a successful computation or operation. It contains the result or value 
+produced by the computation.
+
+- Failure: Represents a failed computation or operation. It contains information about the error or exceptional condition that occurred.
+
+The key idea behind the Result Monad is to encapsulate the success or failure of a computation within the monadic type. By using this monadic structure, you can chain operations together and propagate the error state without explicit error handling in each step.
 
 [![Build and Test](https://github.com/Igben-Nehemiah/Result/actions/workflows/build-test.yml/badge.svg)](https://github.com/Igben-Nehemiah/Result/actions/workflows/build-test.yml)
 
