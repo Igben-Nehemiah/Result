@@ -27,8 +27,8 @@ export class Result<T> {
      * @param error - The error instance.
      * @returns A new result of error type.
      */
-    public static fromError(error: Error){
-        return new Result(error);
+    public static fromError<T>(error: Error){
+        return new Result<T>(error);
     };
 
     /**
