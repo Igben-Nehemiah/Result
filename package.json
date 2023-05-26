@@ -1,6 +1,6 @@
 {
   "name": "@nehemy/result-monad",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple project to help developers work with Result type",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

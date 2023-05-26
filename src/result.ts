@@ -73,7 +73,7 @@ export class Result<T> {
      */
     public map<U>(transform: (value: T) => U): Result<U> {
         return this.isSuccessful ? 
-            new Result(transform()) : 
+            new Result(transform(this.value)) : 
             new Result<U>(this._error);
     };
 
@@ -88,7 +88,7 @@ export class Result<T> {
      */
     public flatMap<U>(transform: (value: T) => Result<U>): Result<U> {
         return this.isSuccessful ? 
-            new transform() : 
+            transform(this.value) : 
             new Result<U>(this._error);
     };
 
