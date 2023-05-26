@@ -3,23 +3,23 @@ export class Result<T> {
     private readonly _error?: Error;
 
     /**
-     * @param value - Value of result.
+     * Represents a result that holds a value.
+     * @param value - Value of the result.
      */
     constructor(value: T);
     /**
-     * 
-     * @param error - Error of result.
+     * Represents a result that holds an error.
+     * @param error - Error of the result.
      */
     constructor(error: Error);
-    constructor(value: T | Error) {
-        if (value instanceof Error){
-            this._error = value;
+    constructor(valueOrError: T | Error) {
+        if (valueOrError instanceof Error) {
+            this._error = valueOrError;
             this._value = undefined;
-            return;
+        } else {
+            this._value = valueOrError;
+            this._error = undefined;
         };
-        
-        this._value = value;
-        this._error = undefined;
     };
 
     /**
