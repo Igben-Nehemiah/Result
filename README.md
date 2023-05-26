@@ -40,8 +40,8 @@ console.log(failureResult.isNotSuccessful); // true
 console.log(failureResult.value); // throws error
 
 
-let result = new Result<number>(12);
-let failureResult = new Result<number>(new Error());
+result = new Result<number>(12);
+failureResult = new Result<number>(new Error());
 
 result.or(4);
 console.log(result.value); // 12
