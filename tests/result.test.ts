@@ -121,6 +121,52 @@ describe("Result", () => {
             expect(errorFromResult).not.toBeUndefined();
         });
     });
+
+    describe("when 'map' is called on a successful result", () => {
+        it ("shoud create a new success result with the value returned from the transformation function", () => {
+            const value = 5;
+            const result = new Result<number>(value);
+
+            const mapResult = result.map((val) => val*val);
+            
+            expect(mapResult.value).toBe(value * value);
+        });
+    });
+
+    describe("when 'map' is called on a failed result", () => {
+        it ("shoud return a failure result", () => {
+            const error = new Error("Some error");
+            const result = new Result<number>(error);
+
+            const mapResult = result.map((val) => val*val);
+            
+            expect(mapResult.isNotSuccessful).toBeTruthy();
+            expect(mapResult.error).toBe(error);
+        });
+    });
+
+    describe("when 'flatMap' is called on a successful result", () => {
+        it ("shoud returm a the success result defined by the transformation function", () => {
+            const value = 5;
+            const result = new Result<number>(value);
+
+            const mapResult = result.flatMap((val) => new Result(val*val));
+            
+            expect(mapResult.value).toBe(value * value);
+        });
+    });
+
+    describe("when 'flatMap' is called on a failed result", () => {
+        it ("shoud return a failure result", () => {
+            const error = new Error("Some error");
+            const result = new Result<number>(error);
+
+            const mapResult = result.flatMap((val) => new Result(val * val));
+            
+            expect(mapResult.isNotSuccessful).toBeTruthy();
+            expect(mapResult.error).toBe(error);
+        });
+    });
 });
 
 
