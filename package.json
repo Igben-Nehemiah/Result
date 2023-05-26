@@ -1,9 +1,20 @@
 {
-  "name": "result",
-  "version": "1.0.0",
-  "description": "A simple project to help developers work with monads",
-  "main": "index.js",
+  "name": "@nehemy/result-monad",
+  "version": "1.0.1",
+  "description": "A simple project to help developers work with Result type",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "exports": {
+    ".": {
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.js"
+    }
+  },
   "scripts": {
+    "prepublish": "tsc",
     "build": "tsc",
     "test": "jest"
   },
@@ -13,8 +24,8 @@
   },
   "keywords": [
     "functional",
-    "monads",
-    "result"
+    "ts-result-monad",
+    "ts-result"
   ],
   "author": "Igben O. Nehemiah",
   "license": "MIT",
